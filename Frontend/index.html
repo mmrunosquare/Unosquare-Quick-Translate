@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <meta name="description" content="QuickTranslate" , initial-scale=1.0">
+    <title> QuickTranslate </title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <header>
+        <h1> QuickTranslate </h1>
+        <nav>
+            <a href="https://www.linkedin.com/in/ruiz-herrejon-cristal-esmeralda-54a620383/"> Contacto </a>
+            <a href="#"> Informacion </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="translator">
+            <div class="box">
+                <select id="root-languaje" class="select-list">
+                    <option value="">Seleccionar idioma</option>
+                    <option value="es">Español</option>
+                    <option value="en">Inglés</option>
+                    <option value="fr">Francés</option>
+                </select>
+                <textarea id="origin-text" placeholder="Ingresar Texto..."></textarea>
+            </div>
+
+            <button id="button-swap">⇋</button>
+
+            <div class="box">
+                <select id="translate-languaje" class="select-list">
+                    <option value="">Seleccionar idioma</option>
+                    <option value="es">Español</option>
+                    <option value="en">Inglés</option>
+                    <option value="fr">Francés</option>
+                </select>
+                <textarea id="target-text" placeholder="..."></textarea>
+            </div>
+        </section>
+    </main>
+    <script>
+
+        document.getElementById("button-swap").onclick = function () {
+            const select1 = document.getElementById("root-languaje");
+            const select2 = document.getElementById("translate-languaje");
+
+            const origin = document.getElementById("origin-text");
+            const target = document.getElementById("target-text");
+
+            const value1 = select1.value;
+            const value2 = select2.value;
+            const orintext = origin.value;
+            const targtext = target.value;
+            
+
+            select1.value = value2;
+            select2.value = value1;
+            origin.value = targtext;
+            target.value = orintext;
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
