@@ -1,0 +1,8 @@
+POST http://localhost:5000/translate
+Content-Type: application/json
+
+{
+  "q": "I am doing good, and you?",
+  "source": "en",
+  "target": "es"
+}
