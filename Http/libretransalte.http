@@ -1,8 +1,8 @@
-POST http://localhost:5000/translate
+POST http://40.118.129.127:5000/translate
 Content-Type: application/json
-
+ 
 {
-  "q": "I am doing good, and you?",
-  "source": "en",
-  "target": "es"
+  "q": "Voy a etudiar toda la tarde",
+  "source": "es",
+  "target": "en"
 }
