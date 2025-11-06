@@ -1,24 +1,54 @@
-fetch("http://localhost:5170/Hello/world")
-.then(x => x.text())
-.then(x => console.log(x))
-.catch(error => console.log("error:", error));
+const select1 = document.getElementById("root-languaje");
+const select2 = document.getElementById("translate-languaje");
+const origin = document.getElementById("origin-text");
+const target = document.getElementById("target-text");
+const swapButton = document.getElementById("button-swap");
 
-document.getElementById("button-swap").onclick = function () {
-            const select1 = document.getElementById("root-languaje");
-            const select2 = document.getElementById("translate-languaje");
+async function translateText() {
+    const text = origin.value.trim();
+    const source = select1.value;
+    const targetLang = select2.value;
 
-            const origin = document.getElementById("origin-text");
-            const target = document.getElementById("target-text");
+    if (!text || !source || !targetLang) {
+        target.value = "";
+        return;
+    }
 
-            const value1 = select1.value;
-            const value2 = select2.value;
-            const orintext = origin.value;
-            const targtext = target.value;
-            
+    try {
+        const response = await fetch("http://52.226.5.234:5000/translate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                q: text,
+                source: source,
+                target: targetLang
+            })
+        });
 
-            select1.value = value2;
-            select2.value = value1;
-            origin.value = targtext;
-            target.value = orintext;
+        const data = await response.json();
+        target.value = data.translatedText || "";
 
-        }
+    } catch (error) {
+        console.error("Error al traducir:", error);
+        target.value = "Error en la traducción";
+    }
+}
+
+function swapLanguages() {
+    const tempLang = select1.value;
+    const tempText = origin.value;
+
+    select1.value = select2.value;
+    select2.value = tempLang;
+
+    origin.value = target.value;
+    target.value = tempText;
+
+    translateText();
+}
+
+origin.addEventListener("input", translateText);
+select1.addEventListener("change", translateText);
+select2.addEventListener("change", translateText);
+swapButton.addEventListener("click", swapLanguages);
+

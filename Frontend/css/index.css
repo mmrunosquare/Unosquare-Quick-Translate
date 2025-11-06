@@ -82,10 +82,9 @@ textarea {
     height: 40px;
     font-size: 18px;
     cursor: pointer;
-    transition: background-color 0,3s ease;
+    transition: background-color 0, 3s ease;
 }
 
 #button-swap:hover {
-    background-color: #bab9b9 ;
-
+    background-color: #bab9b9;
 }
