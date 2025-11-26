@@ -1,8 +1,10 @@
-POST http://40.118.129.127:5000/translate
+
+
+POST http://localhost:5170/api
 Content-Type: application/json
  
 {
-  "q": "Voy a etudiar toda la tarde",
-  "source": "es",
-  "target": "en"
+    "idiomaOrigen": "es",
+    "idiomaDestino": "en", 
+    "textoOrigen": "buentas tardes"
 }

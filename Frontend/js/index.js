@@ -15,18 +15,19 @@ async function translateText() {
     }
 
     try {
-        const response = await fetch("http://52.226.5.234:5000/translate", {
+        const response = await fetch("http://localhost:5170/api", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                q: text,
-                source: source,
-                target: targetLang
+                textoOrigen: text,
+                idiomaOrigen: source,
+                idiomaDestino: targetLang
+                
             })
         });
 
         const data = await response.json();
-        target.value = data.translatedText || "";
+        target.value = data.message || "";
 
     } catch (error) {
         console.error("Error al traducir:", error);
